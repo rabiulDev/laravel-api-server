@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class HelloWorldMiddleware
@@ -16,6 +17,10 @@ class HelloWorldMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+//        dump('Hello world');
+//        return new JsonResponse([
+//            'data' => 'Hello world',
+//        ]);
         return $next($request);
     }
 }
