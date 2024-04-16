@@ -11,4 +11,9 @@ class Comment extends Model
     protected $casts = [
         'body' => 'array'
     ];
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'post_id');
+    }
 }
