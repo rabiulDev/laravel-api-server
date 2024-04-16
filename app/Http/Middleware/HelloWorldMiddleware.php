@@ -23,4 +23,8 @@ class HelloWorldMiddleware
 //        ]);
         return $next($request);
     }
+//    public function terminate($request, $response)
+//    {
+//        dump('Bye');
+//    }
 }
