@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use \Illuminate\Http\JsonResponse;
 use \Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -16,8 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new \Illuminate\Http\JsonResponse([
-            'data' => 'Hehehe',
+        $users = User::query()->get();
+        return new JsonResponse([
+            'data' => $users,
         ]);
     }
 
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return new \Illuminate\Http\JsonResponse([
+        return new JsonResponse([
             'data' => 'Created',
         ]);
     }
@@ -42,7 +43,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return new \Illuminate\Http\JsonResponse([
+        return new JsonResponse([
             'data' => $user,
         ]);
     }
@@ -56,7 +57,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return new \Illuminate\Http\JsonResponse([
+        return new JsonResponse([
             'data' => 'Updated',
         ]);
     }
@@ -69,7 +70,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        return new \Illuminate\Http\JsonResponse([
+        return new JsonResponse([
             'data' => 'Deleted',
         ]);
     }

@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 //Route::apiResource('users', UserController::class);
 
-Route::middleware('auth')
+Route::middleware([
+//    'auth'
+])
     ->name('users.')
     ->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('index');
