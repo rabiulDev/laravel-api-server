@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Helpers\Routes\RouteHelper;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-    require __DIR__ . '/api/v1/users.php';
+    RouteHelper::includeRouteFiles(__DIR__ . '/api/v1');
+//    require __DIR__ . '/api/v1/users.php';
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

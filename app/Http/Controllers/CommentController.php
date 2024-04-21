@@ -33,11 +33,13 @@ class CommentController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Comment $comment)
     {
-        //
+        return new \Illuminate\Http\JsonResponse([
+            'data' => $comment,
+        ]);
     }
 
     /**
