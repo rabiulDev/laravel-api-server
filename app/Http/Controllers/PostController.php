@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\GeneralJsonException;
 use App\Http\Resources\PostResource;
 use App\Repositories\PostRepository;
 use \Illuminate\Http\JsonResponse;
@@ -21,6 +22,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+//        throw new GeneralJsonException('Not implemented', 422);
+
         $pageSize = $request->pageSize ?? 3;
         $posts = Post::query()->paginate($pageSize);
         return PostResource::collection($posts);
