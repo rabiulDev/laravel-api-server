@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Resources\UserResource;
+use App\Repositories\UserRepository;
 use \Illuminate\Http\JsonResponse;
 use \Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
@@ -25,14 +27,17 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param \Illuminate\Http\Request $request
+     * @return UserResource
      */
-    public function store(Request $request)
+    public function store(Request $request, UserRepository $repository)
     {
-        return new JsonResponse([
-            'data' => 'Created',
-        ]);
+        $created = $repository->create($request->only([
+            'name',
+            'email',
+            'password'
+        ]));
+        return new UserResource($created);
     }
 
     /**
