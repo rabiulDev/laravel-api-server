@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class UserUpdatedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,8 @@ class WelcomeMail extends Mailable
     public function build()
     {
         return $this
-            ->subject('Welcome to Livepost!')
-            ->markdown('mail.welcome-mail', ['name' => $this->user->name]);
+            ->subject('User Updated Successfully')
+            ->markdown('mail.user-updated', ['name' => $this->user->name]);
+
     }
 }

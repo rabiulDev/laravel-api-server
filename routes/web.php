@@ -19,6 +19,9 @@ Route::get('/', function () {
 if(\Illuminate\Support\Facades\App::environment('local')){
 
     Route::get('/playground', function (){
-        return (new \App\Mail\WelcomeMail())->render();
+        $user = \App\Models\User::query()->first();
+        \Illuminate\Support\Facades\Mail::to($user)
+            ->send(new \App\Mail\WelcomeMail($user));
+        return null;
     });
 }

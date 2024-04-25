@@ -5,6 +5,8 @@ namespace App\Repositories;
 
 
 use App\Events\Models\User\UserCreated;
+use App\Events\Models\User\UserDeleted;
+use App\Events\Models\User\UserUpdated;
 use App\Exceptions\GeneralJsonException;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
